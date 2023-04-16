@@ -3,11 +3,11 @@ import numpy as np
 import pandas as pd
 import faiss
 
-df=pd.read_csv(r'datasets\statute.csv')
+df=pd.read_csv(r'datasets/statute.csv')
 
 #PATHS
-SBERT_INDEX=faiss.read_index(r'datasets\statute_sbert.index')
-TFIDF_INDEX=faiss.read_index(r'datasets\statute_tfidf.index')
+SBERT_INDEX=faiss.read_index(r'datasets/statute_sbert.index')
+TFIDF_INDEX=faiss.read_index(r'datasets/statute_tfidf.index')
 
 
 # what happens 5 are not present catch error

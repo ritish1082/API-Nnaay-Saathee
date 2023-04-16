@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 
 
 #PATHS
-STATUTE_MODEL= SentenceTransformer(r'models\msmarco-distilbert-base-v4-e1')
+STATUTE_MODEL= SentenceTransformer(r'models/msmarco-distilbert-base-v4-e1')
 
 
 app = FastAPI()
@@ -29,7 +29,7 @@ async def get_statute(query: str):
     try:
         start_time = time.time()
         
-        vectorizer=pickle.load(open(r'models\vectorizer.pkl','rb'))
+        vectorizer=pickle.load(open(r'models/vectorizer.pkl','rb'))
         tfidf_vector=vectorizer.transform([query]).toarray().astype('float32')
 
         sbert_vector=STATUTE_MODEL.encode([query])
