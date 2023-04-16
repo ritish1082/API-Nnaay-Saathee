@@ -1,7 +1,6 @@
 # Import Dependencies
 import numpy as np
 import pandas as pd
-import json
 import faiss
 
 df=pd.read_csv(r'datasets\statute.csv')

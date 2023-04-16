@@ -12,6 +12,18 @@ STATUTE_MODEL= SentenceTransformer(r'models\msmarco-distilbert-base-v4-e1')
 
 app = FastAPI()
 
+
+@app.get("/")
+def start():
+    try:
+        return {'code':200}
+    
+    except Exception as ex:
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        return {"error":message}
+
+
 @app.get("/statute/")
 async def get_statute(query: str):
     try:
