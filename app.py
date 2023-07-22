@@ -13,24 +13,12 @@ CASE_MODEL= SentenceTransformer(r'models/msmarco-distilbert-base-v4-e4-case')
 
 app = FastAPI()
 
-
-@app.get("/")
-def start():
-    try:
-        return {'code':200}
-    
-    except Exception as ex:
-        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
-        message = template.format(type(ex).__name__, ex.args)
-        return {"error":message}
-
-
 @app.get("/statute/")
 async def get_statute(query: str):
     try:
         start_time = time.time()            
         
-        vectorizer=pickle.load(open(r'models/vectorizer.pkl','rb'))
+        vectorizer=pickle.load(open(r'models\vectorizer.pkl','rb'))
         tfidf_vector=vectorizer.transform([query]).toarray().astype('float32')
 
         sbert_vector=STATUTE_MODEL.encode([query])
